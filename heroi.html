@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Nível do Herói Nordestino</title>
+    <style>
+        /* Estilos globais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Estilos da área de conteúdo */
+        .container {
+            background-color: #02295c; /* azul escuro */
+            color: #fff;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Estilos de cabeçalho */
+        h2 {
+            margin: 0 0 20px;
+            color: #add8e6;
+        }
+
+        /* Estilos dos rótulos e inputs */
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #add8e6;
+            display: block;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        /* Estilos do botão */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2e68a2;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1c507d;
+        }
+
+        /* Estilos do resultado */
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #add8e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora de Nível do Herói Nordestino</h2>
+        
+        <label for="heroi">Nome do Herói:</label>
+        <input type="text" id="heroi" placeholder="Escolha seu nome de Héroi nordestino">
+
+        <label for="xp">XP do Herói:</label>
+        <input type="number" id="xp" placeholder="Digite o XP do herói">
+
+        <button onclick="calcularNivel()">Calcular Nível</button>
+        
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularNivel() {
+            // Captura os valores de entrada
+            let heroi = document.getElementById("heroi").value || "Herói sem nome";
+            let xp = parseInt(document.getElementById("xp").value) || 0;
+            let nivel;
+
+            // Mapeamento de níveis de acordo com o XP
+            const niveis = [
+                { maxXP: 1000, nome: "Ferro" },
+                { maxXP: 2000, nome: "Bronze" },
+                { maxXP: 5000, nome: "Prata" },
+                { maxXP: 6000, nome: "Ouro" },
+                { maxXP: 7000, nome: "Platina" },
+                { maxXP: 8000, nome: "Diamante" },
+                { maxXP: 9000, nome: "Nordestino Imortal" },
+                { maxXP: 10000, nome: "Nordestino Supremo" },
+                { maxXP: Infinity, nome: "'Oxê você esta em um nivél superior você é um nordestino arretado, Northeastern galactic god'" }
+            ];
+
+            // Encontrar o nível correspondente
+            nivel = niveis.find(nivel => xp <= nivel.maxXP).nome;
+
+            // Exibir o resultado na página
+            document.getElementById("resultado").textContent = `O herói de nome ${heroi}, está no nível ${nivel}`;
+        }
+    </script>
+</body>
+</html>
